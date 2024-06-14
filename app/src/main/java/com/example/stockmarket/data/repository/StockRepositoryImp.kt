@@ -16,8 +16,11 @@ import okio.IOException
 import retrofit2.HttpException
 import java.io.InputStream
 import java.io.InputStreamReader
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class StockRepositoryImp(
+@Singleton
+class StockRepositoryImp @Inject constructor(
     val stockAPI: StockAPI,
     val database: StockDatabase
 ) : StockRepository {

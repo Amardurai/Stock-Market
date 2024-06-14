@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -42,8 +43,21 @@ android {
     buildFeatures {
         compose = true
     }
+    kotlin {
+        sourceSets {
+            debug {
+                kotlin.srcDir("build/generated/ksp/debug/kotlin")
+            }
+            release {
+                kotlin.srcDir("build/generated/ksp/release/kotlin")
+            }
+        }
+    }
+    buildFeatures {
+        compose = true
+    }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -73,9 +87,12 @@ dependencies {
     implementation(libs.material.icons.extended)
     implementation(libs.accompanist.swiperefresh)
     implementation(libs.hilt.android)
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+//    implementation(libs.dagger.hilt.compiler)
     ksp(libs.hilt.android.compiler)
-    implementation(libs.hilt.lifecycle.viewmodel)
     ksp(libs.hilt.compiler)
+    implementation(libs.hilt.lifecycle.viewmodel)
     implementation(libs.hilt.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

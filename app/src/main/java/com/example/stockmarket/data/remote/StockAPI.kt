@@ -1,6 +1,6 @@
 package com.example.stockmarket.data.remote
 
-import com.example.stockmarket.app_module.AppModule.API_KEY
+import com.example.stockmarket.di.AppModule.API_KEY
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
