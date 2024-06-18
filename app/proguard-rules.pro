@@ -19,7 +19,4 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep class com.example.stockmarket.StockApplication { *; }
-
--keep class dagger.hilt.internal.aggregatedroot.codegen.** { *; }
--keep class hilt_aggregated_deps.** { *; }
+-keep class com.example.stockmarket.MyApplication { *; }
