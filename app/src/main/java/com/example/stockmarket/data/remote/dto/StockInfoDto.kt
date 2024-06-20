@@ -1,4 +1,4 @@
-package com.plcoding.stockmarketapp.data.remote.dto
+package com.example.stockmarket.data.remote.dto
 
 import com.squareup.moshi.Json
 

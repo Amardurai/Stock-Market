@@ -7,6 +7,8 @@ import com.example.stockmarket.data.remote.StockAPI
 import com.example.stockmarket.domain.respository.StockRepository
 import com.example.stockmarket.utils.Resource
 import com.opencsv.CSVReader
+import com.plcoding.stockmarketapp.domain.model.IntraDayInfo
+import com.plcoding.stockmarketapp.domain.model.StockInfo
 import com.plcoding.stockmarketapp.domain.model.StockListing
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -81,6 +83,14 @@ class StockRepositoryImp @Inject constructor(
                 reader.close()
             }
         }
+    }
+
+    override suspend fun getIntradayInfo(symbol: String): Resource<List<IntraDayInfo>> {
+
+    }
+
+    override suspend fun getStockInfo(symbol: String): Resource<StockInfo> {
+
     }
 
 }

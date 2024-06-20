@@ -25,6 +25,7 @@ class StockListingViewModel @Inject constructor(val stockRepository: StockReposi
     init {
         getStockListing(true)
     }
+
     fun onEvent(event: StockListingEvent) {
         when (event) {
             is StockListingEvent.RefreshEvent -> {
