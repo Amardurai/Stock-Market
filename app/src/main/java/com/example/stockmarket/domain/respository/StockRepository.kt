@@ -14,7 +14,9 @@ interface StockRepository {
         query: String
     ): Flow<Resource<List<StockListing>>>
 
-    suspend fun parseCsvFile(byteStream: InputStream): Any
+    suspend fun parseCsvFileForStockListing(byteStream: InputStream): Any
+
+    suspend fun parseCsvFileForIntraDayInfo(byteStream: InputStream): Any
 
     suspend fun getIntradayInfo(symbol: String): Resource<List<IntraDayInfo>>
 
