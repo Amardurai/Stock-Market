@@ -13,16 +13,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.stockmarket.utils.Routes
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @Composable
 fun StockListingScreen(
     state: StockListingState,
-    event: (StockListingEvent) -> Unit
+    event: (StockListingEvent) -> Unit,
+    navController: NavHostController
 ) {
     val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = state.isRefreshing)
-
     Column(
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
@@ -50,7 +53,7 @@ fun StockListingScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navController.navigate(Routes.StockDetail(state.stocks[it].symbol))
                             }
                     )
                     if (it < state.stocks.size) {
@@ -65,5 +68,5 @@ fun StockListingScreen(
 @Preview
 @Composable
 private fun PreviewStockListingScreen() {
-    StockListingScreen(StockListingState()) {}
+    StockListingScreen(StockListingState(), {}, rememberNavController())
 }

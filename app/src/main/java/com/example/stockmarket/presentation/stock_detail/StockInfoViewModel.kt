@@ -3,12 +3,15 @@ package com.example.stockmarket.presentation.stock_detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.example.stockmarket.domain.respository.StockRepository
 import com.example.stockmarket.utils.Resource
+import com.example.stockmarket.utils.Routes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,14 +21,15 @@ class StockInfoViewModel @Inject constructor(
     val stockRepository: StockRepository
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(StockInfoState())
-    val uiState: StateFlow<StockInfoState> get() = _uiState
+    val uiState: StateFlow<StockInfoState> get() = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
-            val symbol = savedStateHandle.get<String>("symbol") ?: return@launch
+            val args = savedStateHandle.toRoute<Routes.StockDetail>()
+
             _uiState.value = _uiState.value.copy(isLoading = true)
-            val stockInfo = async { stockRepository.getStockInfo(symbol) }
-            val intraDayInfo = async { stockRepository.getIntradayInfo(symbol) }
+            val stockInfo = async { stockRepository.getStockInfo(args.symbol) }
+            val intraDayInfo = async { stockRepository.getIntradayInfo(args.symbol) }
 
             when (val result = stockInfo.await()) {
                 is Resource.Error -> {

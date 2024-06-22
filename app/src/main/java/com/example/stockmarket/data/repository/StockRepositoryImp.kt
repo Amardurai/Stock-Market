@@ -88,7 +88,7 @@ class StockRepositoryImp @Inject constructor(
 
     override suspend fun getStockInfo(symbol: String): Resource<StockInfo> {
         return try {
-            val result = stockAPI.GetStockInfo(symbol)
+            val result = stockAPI.getStockInfo(symbol)
             Resource.Success(result.toStockInfo())
         } catch (e: IOException) {
             e.printStackTrace()

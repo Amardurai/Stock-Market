@@ -7,7 +7,8 @@ sealed class Routes {
 
     @Serializable
     data object StockListing : Routes()
+
     @Serializable
-    data class StockDetail(val stockId: Int) : Routes()
+    data class StockDetail(val symbol: String) : Routes()
 
 }

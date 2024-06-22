@@ -20,10 +20,9 @@ interface StockAPI {
     ): ResponseBody
 
     @GET("query?function=OVERVIEW")
-    suspend fun GetStockInfo(
+    suspend fun getStockInfo(
         @Query("symbol") symbol: String,
-        @Query("apiKey") apiKey: String = API_KEY
+        @Query("apikey") apiKey: String = API_KEY
     ): StockInfoDto
-
 
 }

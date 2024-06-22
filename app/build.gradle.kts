@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     ksp(libs.hilt.android.compiler)
+    ksp(libs.moshi.kotlin.codegen)
     ksp(libs.androidx.room.compiler)
     implementation(libs.hilt.navigation.compose)
     testImplementation(libs.junit)

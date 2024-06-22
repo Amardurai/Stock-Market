@@ -26,7 +26,7 @@ fun StockItem(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(5.dp)
     ) {
