@@ -121,7 +121,7 @@ class StockRepositoryImp @Inject constructor(
     override suspend fun parseCsvFileForIntraDayInfo(byteStream: InputStream): List<IntraDayInfo> {
         val reader = CSVReader(InputStreamReader(byteStream))
         return withContext(Dispatchers.IO) {
-            reader.readAll().drop(0).mapNotNull {
+            reader.readAll().drop(1).mapNotNull {
                 val date = it.getOrNull(0) ?: return@mapNotNull null
                 val close = it.getOrNull(4) ?: return@mapNotNull null
                 val intraDayDto = IntradayInfoDto(date, close.toDouble())

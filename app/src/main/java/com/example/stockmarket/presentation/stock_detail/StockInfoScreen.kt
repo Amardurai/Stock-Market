@@ -89,7 +89,8 @@ fun StockInfoScreen(
                         infos = uistate.intraDayInfo,
                         modifier = Modifier
                             .fillMaxSize()
-                            .height(250.dp)
+                            .height(250.dp),
+                        graphColor = MaterialTheme.colorScheme.onSurface
                     )
                 }
             }
@@ -114,7 +115,6 @@ fun StockInfoScreen(
 private fun CustomHorizontalDivider() {
     HorizontalDivider(
         modifier = Modifier
-            .fillMaxSize()
             .height(1.dp),
         color = Color.Gray,
         thickness = 1.dp

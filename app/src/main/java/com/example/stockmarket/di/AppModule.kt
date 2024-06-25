@@ -17,7 +17,7 @@ import javax.inject.Singleton
 object AppModule {
 
     const val BASE_URL = "https://www.alphavantage.co"
-    const val API_KEY = "496G4KNYKE0BRVHL"
+    const val API_KEY = "7K8CDOMVO8KG5WQ4"
 
 
     @Provides
